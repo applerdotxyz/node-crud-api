@@ -3,7 +3,9 @@ Node boilerplate for PoC
 
 ## How to Run
 `npm install`
+
 `npm start`
+
 go to http://localhost:8080
 
 ## TODOs
