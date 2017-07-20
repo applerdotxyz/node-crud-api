@@ -46,7 +46,9 @@ if(process.env.NODE_ENV == 'dev') {
   app.listen(process.env.NODE_PORT);
 }else if(process.env.NODE_ENV == 'prod') {
   habitat.load('.env.prod');
-  app.lister(process.env.NODE_PORT);
+  app.listen(process.env.NODE_PORT);
+}else {
+  app.listen(8080)
 }
 
 /* eslint-disable */
