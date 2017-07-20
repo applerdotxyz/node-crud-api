@@ -5,9 +5,9 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const habitat = require('habitat');
 const index = require('./routes/index');
 /* eslint-enable */
-const PORT = 8080;
 
 const app = express();
 
@@ -41,7 +41,14 @@ app.use((req, res, next) => {
   next(err);
 });
 
-app.listen(PORT);
+if(process.env.NODE_ENV == 'dev') {
+  habitat.load('.env.dev');
+  app.listen(process.env.NODE_PORT);
+}else if(process.env.NODE_ENV == 'prod') {
+  habitat.load('.env.prod');
+  app.lister(process.env.NODE_PORT);
+}
+
 /* eslint-disable */
 module.exports = app; //@todo :: use es6 import/export
 /* eslint-enable */
