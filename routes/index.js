@@ -70,6 +70,9 @@ const users = [
 
 ];
 
+router.get('/', (req, res) => {
+  res.render('index');
+});
 // GET - get user by id
 router.get('/users/:id', (req, res) => {
   res.send(users[req.params.id - MINUS_ONE]);
